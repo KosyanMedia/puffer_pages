@@ -153,7 +153,11 @@ class PufferPages::Backends::Page < ActiveRecord::Base
   end
 
   def inherited_page_part name
-    inherited_page_parts[name].first
+    if inherited_page_parts[name]
+      inherited_page_parts[name].first
+    else
+      nil
+    end
   end
 
   def render *args
